@@ -1,0 +1,18 @@
+# -*- coding: utf8 -*-
+import urllib2
+import json
+
+def main_handler(event, context):
+    content = '# <font color="warning">产品自查日</font>\n\n今日为一周一度的产品自查日，请轮值人对负责的业务产品进行自查～\n\n[自查文档](https://iwiki.woa.com/pages/viewpage.action?pageId=824739268)\n\n'
+    data = {
+            'msgtype': 'markdown',
+            'markdown': {
+                'amentioned_list':['@all'],
+                'content': content
+            }
+    }
+
+    req = urllib2.Request('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=cc598d38-45eb-4f98-b58e-6e9e935df2bc')
+    req.add_header('Content-Type', 'application/json')
+    response = urllib2.urlopen(req, json.dumps(data))
+    return response.code
