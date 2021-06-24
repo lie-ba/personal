@@ -12,7 +12,7 @@ def main_handler(event, context):
             }
     }
 
-    req = urllib2.Request('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=cc598d38-45eb-4f98-b58e-6e9e935df2bc')
+    req = urllib2.Request('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=************************')
     req.add_header('Content-Type', 'application/json')
     response = urllib2.urlopen(req, json.dumps(data))
     return response.code
